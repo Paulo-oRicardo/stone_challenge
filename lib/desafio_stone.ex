@@ -1,21 +1,13 @@
 defmodule DesafioStone do
-  def nome(nome1) do
-    "Olá #{nome1}"
+  def exec do
+    people = [
+      %Person{email: "email@gmail.com"},
+      %Person{email: "email2@gmail.com"},
+      %Person{email: "email3@gmail.com"}
+    ]
+    lists = Lists.search_completed_list()
+    map = Dictionary.divide(people)
+  [lists, map]
   end
-  @moduledoc """
-  Documentation for DesafioStone.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> DesafioStone.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end

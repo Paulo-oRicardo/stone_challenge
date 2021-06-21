@@ -36,7 +36,7 @@ defmodule Lists do
   end
 
   def final_price() do
-    lista = Enum.map(search_list(), fn l -> l.totalItens end)
-    _result = Enum.sum(lista)
+    list = Enum.map(search_list(), &(&1.totalItens))
+    _result = Enum.sum(list)
   end
 end

@@ -6,9 +6,14 @@ defmodule Dictionary do
      length(people) == 0 -> {:error, "Insira um cliente"}
       true ->
         count = Enum.count(people)
-        share = Lists.final_price()/count
-        _share = Enum.map(people, fn person -> %Person{ person | amountToPay: share} end)
-
+        share = div(Lists.final_price(),count)
+        result = Enum.map(people, fn p -> %Person{p | amountToPay: share }end)
+          if Lists.final_price() - (share * count) > 0 do
+            rest =  Lists.final_price() - (share * count)
+            List.replace_at(result, -1, %Person{List.last(result) | amountToPay: List.last(result).amountToPay + rest})
+            else
+              result
+          end
     end
   end
 end
