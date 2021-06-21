@@ -7,7 +7,7 @@ defmodule DesafioStone do
     ]
     lists = Lists.search_completed_list()
     map = Dictionary.divide(people)
+
   [lists, map]
   end
-
 end
