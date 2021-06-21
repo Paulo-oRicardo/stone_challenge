@@ -3,8 +3,8 @@ defmodule Lists do
 
   defstruct itenName: nil, amount: nil, pricePer: nil, totalItens: 0
 
-  def new_iten(itenName, amount, pricePer) do
-    list = %__MODULE__{itenName: itenName, amount: amount, pricePer: pricePer}
+  def new_item(itemName, amount, pricePer) do
+    list = %__MODULE__{itenName: itemName, amount: amount, pricePer: pricePer}
     cond do
       search_list() == nil ->
         totalItens =  [%Lists{list | totalItens: list.amount * list.pricePer}]
