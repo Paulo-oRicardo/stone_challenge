@@ -1,17 +1,17 @@
 defmodule Lists do
   @lists "lists.txt"
 
-  defstruct itenName: nil, amount: nil, pricePer: nil, totalItens: 0
+  defstruct iten_name: nil, amount: nil, price_per: nil, total_itens: 0
 
-  def new_item(itemName, amount, pricePer) do
-    list = %__MODULE__{itenName: itemName, amount: amount, pricePer: pricePer}
+  def new_item(item_name, amount, price_per) do
+    list = %__MODULE__{iten_name: item_name, amount: amount, price_per: price_per}
     cond do
       search_list() == nil ->
-        totalItens =  [%Lists{list | totalItens: list.amount * list.pricePer}]
+        totalItens =  [%Lists{list | total_itens: list.amount * list.price_per}]
         |> :erlang.term_to_binary()
         write_file(totalItens)
         true->
-        totalItens = [%Lists{list | totalItens: list.amount * list.pricePer}] ++ search_list()
+        totalItens = [%Lists{list | total_itens: list.amount * list.price_per}] ++ search_list()
         |> :erlang.term_to_binary()
         write_file(totalItens)
     end
@@ -36,7 +36,7 @@ defmodule Lists do
   end
 
   def final_price() do
-    list = Enum.map(search_list(), &(&1.totalItens))
+    list = Enum.map(search_list(), &(&1.total_itens))
     _result = Enum.sum(list)
   end
 end

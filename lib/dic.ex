@@ -7,10 +7,10 @@ defmodule Dictionary do
       true ->
         count = Enum.count(people)
         share = div(Lists.final_price(),count)
-        result = Enum.map(people, fn p -> %Person{p | amountToPay: share }end)
+        result = Enum.map(people, fn p -> %Person{p | amount_pay: share }end)
           if Lists.final_price() - (share * count) > 0 do
             rest =  Lists.final_price() - (share * count)
-            List.replace_at(result, -1, %Person{List.last(result) | amountToPay: List.last(result).amountToPay + rest})
+            List.replace_at(result, -1, %Person{List.last(result) | amount_pay: List.last(result).amountToPay + rest})
             else
               result
           end
